@@ -220,6 +220,83 @@
 
       <div class="body-wrap">
   
+    <article id="post-Test" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/24/Test/" class="article-date">
+  	<time datetime="2016-02-24T00:15:00.000Z" itemprop="datePublished">2月 24</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/24/Test/">你好  小杨</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">如果没有这行代码的话，协议StudentDelegate中得Student类型就会查找不到，报错</span><br></pre></td></tr></table></figure>
+<p>@class Student； </p>
+<p>@protocol StudentDelegate<NSObject></p>
+<p>-（void)paly:(Student*)stu;</p>
+<p>@end</p>
+<p>@interface Student：NSObject</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">注意assign的用法    使用strong在ARC中同样是因为释放不掉出现内存泄露</span><br></pre></td></tr></table></figure>
+<p>@property(assign, nonatomic) id<StudentDelegate>delegate;</p>
+<p>@end</p>
+<p>static className *Name = nil;</p>
+<p>+(className *)sharedclassName{</p>
+<pre><code>static dispatch_once_t onceToken;
+dispatch_once(&amp;onceToken, ^{
+    Name = [[className alloc]init];
+});
+return Name;
+</code></pre><p>}</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chrome/">chrome</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工具/">工具</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/02/24/Test/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -264,83 +341,6 @@
       
       
 
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Test" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2014/10/16/Test/" class="article-date">
-  	<time datetime="2014-10-16T00:15:00.000Z" itemprop="datePublished">10月 16</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/10/16/Test/">你好  小杨</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">如果没有这行代码的话，协议StudentDelegate中得Student类型就会查找不到，报错</span><br></pre></td></tr></table></figure>
-<p>@class Student； </p>
-<p>@protocol StudentDelegate<NSObject></p>
-<p>-（void)paly:(Student*)stu;</p>
-<p>@end</p>
-<p>@interface Student：NSObject</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">注意assign的用法    使用strong在ARC中同样是因为释放不掉出现内存泄露</span><br></pre></td></tr></table></figure>
-<p>@property(assign, nonatomic) id<StudentDelegate>delegate;</p>
-<p>@end</p>
-<p>static className *Name = nil;</p>
-<p>+(className *)sharedclassName{</p>
-<pre><code>static dispatch_once_t onceToken;
-dispatch_once(&amp;onceToken, ^{
-    Name = [[className alloc]init];
-});
-return Name;
-</code></pre><p>}</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chrome/">chrome</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工具/">工具</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2014/10/16/Test/#more">more >></a>
-        </p>
       
       <div class="clearfix"></div>
     </div>
