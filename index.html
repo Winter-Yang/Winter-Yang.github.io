@@ -246,8 +246,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="如何使用Shell脚本编译生成Archive文件并导出签名IPA文件"><a href="#如何使用Shell脚本编译生成Archive文件并导出签名IPA文件" class="headerlink" title="如何使用Shell脚本编译生成Archive文件并导出签名IPA文件"></a>如何使用Shell脚本编译生成Archive文件并导出签名IPA文件</h2><p>###1: build说明</p>
-<p>  本Shell脚本用于build，XCode的workspace源代码工程，并导出成可重签名的IPA文件，用于分发测试安装文件和用于提交appstore审核的文件。实现辅助产品开发，测试的配置管理工作。</p>
+        <h2 id="如何使用Shell脚本编译生成Archive文件并导出签名IPA文件"><a href="#如何使用Shell脚本编译生成Archive文件并导出签名IPA文件" class="headerlink" title="如何使用Shell脚本编译生成Archive文件并导出签名IPA文件"></a>如何使用Shell脚本编译生成Archive文件并导出签名IPA文件</h2><h3 id="1-build说明"><a href="#1-build说明" class="headerlink" title="1: build说明"></a>1: build说明</h3><p>  本Shell脚本用于build，XCode的workspace源代码工程，并导出成可重签名的IPA文件，用于分发测试安装文件和用于提交appstore审核的文件。实现辅助产品开发，测试的配置管理工作。</p>
 <p>  使用本脚本需要以下环境 ：</p>
 <pre><code>- Mac OS 10.9+ 
 - XCode 6.0 or later and command line tools 
@@ -257,12 +256,8 @@
 - 对Debug配置和Release配置设置好证书名称 
 - 确认在Xcode UI界面中能够完全build，并通过环境生成Archive和IPA，并正确签名。 
 - 在workspace文件夹下建立build文件夹
-</code></pre><p>###2: 复制脚本文件到WorkSpace目录</p>
-<p>###3: 打开终端工具，并进入workspace目录</p>
-<p>###4: 给脚本执行权限</p>
-<pre><code>- chmod 777 ./build_one_target.sh
-</code></pre><p>###5: 修改脚本参数，源代码里已经有注释需要修改的</p>
-<pre><code>- workspace name 
+</code></pre><h3 id="2-复制脚本文件到WorkSpace目录"><a href="#2-复制脚本文件到WorkSpace目录" class="headerlink" title="2: 复制脚本文件到WorkSpace目录"></a>2: 复制脚本文件到WorkSpace目录</h3><h3 id="3-打开终端工具，并进入workspace目录"><a href="#3-打开终端工具，并进入workspace目录" class="headerlink" title="3: 打开终端工具，并进入workspace目录"></a>3: 打开终端工具，并进入workspace目录</h3><h3 id="4-给脚本执行权限"><a href="#4-给脚本执行权限" class="headerlink" title="4: 给脚本执行权限"></a>4: 给脚本执行权限</h3><pre><code>- chmod 777 ./build_one_target.sh
+</code></pre><h3 id="5-修改脚本参数，源代码里已经有注释需要修改的"><a href="#5-修改脚本参数，源代码里已经有注释需要修改的" class="headerlink" title="5: 修改脚本参数，源代码里已经有注释需要修改的"></a>5: 修改脚本参数，源代码里已经有注释需要修改的</h3><pre><code>- workspace name 
 - provisioningProfile
 - scheme name 
 - build_config
@@ -346,8 +341,8 @@ if [ ! -f &quot;${ipa_path}&quot; ]; then
 else
     echo &quot;** Export IPA ZF SUCCEEDED ** to the ${ipa_path}&quot;
 fi
-</code></pre><p>###6: 执行脚本<br>    ./build_one_target.sh</p>
-<p>大一些的工程，大约3-5分钟完成。<br>完成之后，在workspace目录下的build目录下，会有如下两个主要文件。<br>targetname_QA_20150420_094731.xcarchive<br>targetname_QA_adhoc_v2.1.1_b44_rev7849_t20150420_094731.ipa</p>
+</code></pre><h3 id="6-执行脚本"><a href="#6-执行脚本" class="headerlink" title="6: 执行脚本"></a>6: 执行脚本</h3><pre><code>./build_one_target.sh
+</code></pre><p>大一些的工程，大约3-5分钟完成。<br>完成之后，在workspace目录下的build目录下，会有如下两个主要文件。<br>targetname_QA_20150420_094731.xcarchive<br>targetname_QA_adhoc_v2.1.1_b44_rev7849_t20150420_094731.ipa</p>
 <p>xcarchive文件很重要，可以用于不同证书签名的ipa文件<br>ipa文件使用的是adhoc 证书导出，用于真机测试分发。证书名称在源代码中配置。根据不同的产品bundle id，做相应修改，这里的名称和证书，仅做演示参考，不具有任何商业意义</p>
 <p>参考：<a href="http://blog.csdn.net/vieri_ch/article/details/45147027">http://blog.csdn.net/vieri_ch/article/details/45147027</a><br>github：<a href="https://github.com/Winter-Yang/ScriptForArchive">https://github.com/Winter-Yang/ScriptForArchive</a><br>blog：</p>
 <h2 id=""><a href="#" class="headerlink" title=""></a>
