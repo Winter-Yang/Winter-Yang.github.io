@@ -4,43 +4,17 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>初识NSRunloop | 小杨VBoy的博客</title>
+  <title>Archives: 2015 | 小杨VBoy的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="NSrunloopNSRunLoop的主要作用是控制NSRunloop里面线程的执行和休眠,它的本质是一个消息机制的处理模式.在平时接触最多的可能就是NSTimer中使用NSRunloop了，我们先看端代码
--(void)viewDidLoad {
-
-    [super viewDidLoad];
-    [self testTimer];
-}
-
--(void)testTimer{
-    UI">
-<meta property="og:type" content="article">
-<meta property="og:title" content="初识NSRunloop">
-<meta property="og:url" content="http://devyang.cc/2016/02/24/NSRunloop/index.html">
+  <meta name="description" content="做一只快乐的Coder">
+<meta property="og:type" content="website">
+<meta property="og:title" content="小杨VBoy的博客">
+<meta property="og:url" content="http://devyang.cc/archives/2015/index.html">
 <meta property="og:site_name" content="小杨VBoy的博客">
-<meta property="og:description" content="NSrunloopNSRunLoop的主要作用是控制NSRunloop里面线程的执行和休眠,它的本质是一个消息机制的处理模式.在平时接触最多的可能就是NSTimer中使用NSRunloop了，我们先看端代码
--(void)viewDidLoad {
-
-    [super viewDidLoad];
-    [self testTimer];
-}
-
--(void)testTimer{
-    UI">
-<meta property="og:image" content="http://devyang.cc/assets/blogImg/RunloopTest.png">
-<meta property="og:updated_time" content="2016-02-29T07:34:34.000Z">
+<meta property="og:description" content="做一只快乐的Coder">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="初识NSRunloop">
-<meta name="twitter:description" content="NSrunloopNSRunLoop的主要作用是控制NSRunloop里面线程的执行和休眠,它的本质是一个消息机制的处理模式.在平时接触最多的可能就是NSTimer中使用NSRunloop了，我们先看端代码
--(void)viewDidLoad {
-
-    [super viewDidLoad];
-    [self testTimer];
-}
-
--(void)testTimer{
-    UI">
+<meta name="twitter:title" content="小杨VBoy的博客">
+<meta name="twitter:description" content="做一只快乐的Coder">
   
     <link rel="alternative" href="/atom.xml" title="小杨VBoy的博客" type="application/atom+xml">
   
@@ -99,10 +73,10 @@
 				<div class="tips-box hide">
 					<div class="tips-arrow"></div>
 					<ul class="tips-inner">
-						<li>菜单</li>
+						<li>Menu</li>
 						<li>標籤</li>
 						
-						<li>友情链接</li>
+						<li>Links</li>
 						
 						
 						<li>關於</li>
@@ -146,7 +120,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/NSrunloop/" style="font-size: 10px;">NSrunloop</a> <a href="/tags/chrome/" style="font-size: 10px;">chrome</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a>
+						<a href="/tags/NSrunloop/" style="font-size: 10px;">NSrunloop</a> <a href="/tags/OC/" style="font-size: 10px;">OC</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/单例/" style="font-size: 10px;">单例</a>
 					</div>
 				</section>
 				
@@ -244,138 +218,53 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-NSRunloop" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap">
   
-    <div class="article-meta">
-      <a href="/2016/02/24/NSRunloop/" class="article-date">
-  	<time datetime="2016-02-24T00:15:00.000Z" itemprop="datePublished">2月 24</time>
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2015" class="archive-year">2015</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2015/04/24/NSRunloop/" class="archive-article-date">
+  	<time datetime="2015-04-24T00:15:00.000Z" itemprop="datePublished">4月 24</time>
 </a>
-    </div>
+        </div>
+    	 
   
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      初识NSRunloop
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2015/04/24/NSRunloop/">初识NSRunloop</a>
     </h1>
   
 
-      </header>
-      
-      <div class="article-info article-info-post">
-        
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NSrunloop/">NSrunloop</a></li></ul>
 	</div>
 
-        
+          
 
+        </div>
         <div class="clearfix"></div>
-      </div>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="NSrunloop"><a href="#NSrunloop" class="headerlink" title="NSrunloop"></a>NSrunloop</h2><p><strong>NSRunLoop</strong>的主要作用是控制NSRunloop里面线程的执行和休眠,它的本质是一个消息机制的处理模式.在平时接触最多的可能就是NSTimer中使用NSRunloop了，我们先看端代码</p>
-<pre><code>-(void)viewDidLoad {
-
-    [super viewDidLoad];
-    [self testTimer];
-}
-
--(void)testTimer{
-    UIScrollView *myScroll = [[UIScrollView alloc]initWithFrame:[UIScreen mainScreen].bounds];
-    myScroll.contentSize = CGSizeMake(375, 10000);
-    [self.view addSubview:myScroll];
-    myScroll.backgroundColor = [UIColor redColor];
-    myScroll.delegate = self;
-    [self defalutTimer];//defalult mode 下的timer
-    [self commonTimer];//common modes中的timer
-
-}
-
--(void)defalutTimer {
-    [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(doTime) userInfo:nil repeats:YES];
-}
-
--(void)commonTimer {
-    NSTimer *timer =[NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(doTime) userInfo:nil repeats:YES];
-    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
-}
-
--(void)doTime {
-    NSLog(@&quot;%@&quot;,[NSRunLoop currentRunLoop].currentMode);
-    NSLog(@&quot;timer--&quot;);
-}
-
--(void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    NSLog(@&quot;%@&quot;,[NSRunLoop currentRunLoop].currentMode);
-}
-</code></pre><p>控制台的log如下：</p>
-<p><img src="/assets/blogImg/RunloopTest.png" alt=""></p>
-<p>通过log我们可以发现，如果我们滚动scrollView，那么我们会发现，当前的Timer为defalutTimer，commonTimer并没有走，就好像scrollView在滚动的时候将timer暂停了一样。其实就是RunLoop Mode在作怪。</p>
-<p>其实在程序开发过程中，我们并不需要收到创建一个runloop，因此在程序进入主线程中默认为我们创建了一个runloop，在我们注册Timer的时候，实际上是在Runloop里面注册了一下，Runloop每次loop时都会检测这个timer，看是否可以触发。，但是当Runloop在A model，timer确注册在B model时，此时runloop是无法检测到这个timer的，所以需要采用commonTimer的方式，在scrollview进行滑动的时候runloop进入UITrackingRunLoopModes模式，因此需要此将timer加入到NSRunLoopCommonModes模式，这样保证scrollview滑动的同时，timer也在同时进行。</p>
-<p>这是在开发过程中最常用的地方，当然还有其他使用的地方，比如Table的滑动，多线程等。</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2>
-      
-    </div>
-    
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2016/02/24/Test/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          你好  小杨
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2016/02/23/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
-      <strong class="article-nav-caption">></strong>
-    </a>
-  
-</nav>
-
-  
 </article>
+  
+  
+    </div></section>
+  
 
-
-
-
-
-
-<div class="duoshuo">
-	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="NSRunloop" data-title="初识NSRunloop" data-url="http://devyang.cc/2016/02/24/NSRunloop/"></div>
-	<!-- 多说评论框 end -->
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"devyangwd"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-	<!-- 多说公共JS代码 end -->
-</div>
-
-
-
+    
 
 </div>
       <footer id="footer">
@@ -401,8 +290,8 @@
 		mathjax: undefined,
 		animate: true,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false
