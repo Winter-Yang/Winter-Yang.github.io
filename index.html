@@ -220,210 +220,6 @@
 
       <div class="body-wrap">
   
-    <article id="post-ViewController" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/03/07/ViewController/" class="article-date">
-  	<time datetime="2016-03-07T09:02:40.000Z" itemprop="datePublished">3月 7</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/07/ViewController/">初识ViewController生命周期</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="ViewController生命周期"><a href="#ViewController生命周期" class="headerlink" title="ViewController生命周期"></a>ViewController生命周期</h2><pre><code>对于iOS应用程序，关键的是要知道你的应用程序是否正在前台或后台运行。由于系统资源在iOS设备上较为有限，一个应用程序必须在后台与前台有不同的行为。操作系统也会限制你的应用程序在后台的运行，以提高电池寿命，并提高用户与前台应用程序的体验。当应用程序在前台和后台之间切换时，操作系统将会通知您的应用程序。你可以通过这些通知来修改你的应用程序的行为。
-</code></pre><p>   当你的应用程序在前台活动时，系统会发送触摸事件给它进行处理。在UIKit的基础设施做了大部分的事件传递给你的自定义对象工作。所有您需要做的是覆盖在相应的对象的方法来处理这​​些事件。对于控件，UIKit会通过处理你的触摸事件，或者其他一些有趣的事情发生时调用您的自定义代码，比如当文本字段中的值更改。</p>
-<p>1：应用程序的状态</p>
-<pre><code>Not running未运行：程序没启动。
-
-Inactive未激活：程序在前台运行，不过没有接收到事件。在没有事件处理情况下程序通常停留在这个状态。
-
-Active激活：程序在前台运行而且接收到了事件。这也是前台的一个正常的模式。
-
-Backgroud后台：程序在后台而且能执行代码，大多数程序进入这个状态后会在在这个状态上停留一会。时间到之后会进入挂起状态(Suspended)。有的程序经过特殊的请求后可以长期处于Backgroud状态。
-
-Suspended挂起：程序在后台不能执行代码。系统会自动把程序变成这个状态而且不会发出通知。当挂起时，程序还是停留在内存中的，当系统内存低时，系统就把挂起的程序清除掉，为前台程序提供更多的内存。
-</code></pre><p>2：各个程序运行状态时代理的回调</p>
-<p>①告诉代理进程启动但还没进入状态保存<br> {</p>
-<pre><code>-(BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
-
-    NSLog(@&quot;①告诉代理进程启动但还没进入状态保存&quot;);
-    return YES;
-
-}
-</code></pre><p> }</p>
-<p>②告诉代理启动基本完成程序准备开始运行</p>
-<p>{</p>
-<pre><code>-(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
- self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
- NSLog(@&quot;②告诉代理启动基本完成程序准备开始运行&quot;);
-[self.window makeKeyAndVisible];
-return YES;
-}
-</code></pre><p>}</p>
-<p>③当应用程序将要入非活动状态执行，在此期间，应用程序不接收消息或事件，比如来电话</p>
-<p>{</p>
-<pre><code>- (void)applicationWillResignActive:(UIApplication *)application{
-     NSLog(@&quot;③当应用程序将要入非活动状态执行，在此期间，应用程序不接收消息或事件，比如来电话&quot;);
-}
-</code></pre><p>}</p>
-<p>④当应用程序进入活动状态执行</p>
-<p> {</p>
-<pre><code> - (void)applicationDidBecomeActive:(UIApplication *)application{
-     NSLog(@&quot;④当应用程序进入活动状态执行&quot;);
-}
-</code></pre><p> }</p>
-<p>⑤当程序被推送到后台的时候调用。所以要设置后台继续运行，则在这个函数里面设置即可</p>
-<p>{</p>
-<pre><code>- (void)applicationDidEnterBackground:(UIApplication *)application{
-
-  NSLog(@&quot;⑤当程序被推送到后台的时候调用&quot;);
-
-  [application beginBackgroundTaskWithExpirationHandler:^{
-
-      NSLog(@&quot;begin Background Task With Expiration Handler&quot;);
-
- }];
- }
-</code></pre><p>}</p>
-<p>⑥当程序从后台将要重新回到前台时候调用<br> {</p>
-<pre><code> - (void)applicationWillEnterForeground:(UIApplication *)application{
-
- NSLog(@&quot;⑥当程序从后台将要重新回到前台时候调用&quot;);
-
-}
-</code></pre><p> }</p>
-<p>⑦当程序将要退出是被调用，通常是用来保存数据和一些退出前的清理工作。这个需要要设置UIApplicationExitsOnSuspend的键值<br> {</p>
-<pre><code>- (void)applicationWillTerminate:(UIApplication *)application{
-
-NSLog(@&quot;⑦当程序将要退出是被调用&quot;);
-
-}
-</code></pre><p> }</p>
-<p>⑧当程序载入后执行<br> {</p>
-<pre><code>- (void)applicationDidFinishLaunching:(UIApplication *)application{
-    NSLog(@&quot;⑧当程序载入后执行&quot;);
-}
-</code></pre><p> }</p>
-<p>程序启动时：</p>
-<pre><code> 2014-07-01 15:55:14.706 LifeCycle[5845:60b] ①告诉代理进程启动但还没进入状态保存
-
-2014-07-01 15:55:14.708 LifeCycle[5845:60b] ②告诉代理启动基本完成程序准备开始运行
-
-2014-07-01 15:55:14.709 LifeCycle[5845:60b] ④当应用程序进入活动状态执行
-
-按下Home键返回主界面：
-
-2014-07-01 15:56:11.756 LifeCycle[5845:60b] ③当应用程序将要入非活动状态执行
-
-2014-07-01 15:56:11.814 LifeCycle[5845:60b] ⑤当程序被推送到后台的时候调用
-
-再次打开程序：
-
-2014-07-01 15:57:19.200 LifeCycle[5845:60b] ⑥当程序从后台将要重新回到前台时候调用
-
-2014-07-01 15:57:19.201 LifeCycle[5845:60b] ④当应用程序进入活动状态执行
-</code></pre><p>3：加载应用程序进入前台</p>
-<p>4：加载应用程序进入后台</p>
-<p>5：基于警告式响应中断</p>
-<p>当出现这种中断时，我们需要在</p>
-<pre><code>- (void)applicationWillResignActive:(UIApplication *)application方法中进行如下操作：
-</code></pre><p>①停止timer 和其他周期性的任务</p>
-<p>②停止任何正在运行的请求</p>
-<p>③暂停视频的播放</p>
-<p>④如果是游戏那就暂停它</p>
-<p>⑤减少OpenGL ES的帧率</p>
-<p>⑥挂起任何分发的队列和不重要的操作队列（你可以继续处理网络请求或其他时间敏感的后台任务）</p>
-<p>当程序回到active状态，我们需要在以下方法中重新开始上述任务。不过游戏要回到暂停状态，不能自动开始。</p>
-<pre><code>- (void)applicationDidBecomeActive:(UIApplication *)application
-</code></pre><p>6：进入后台运行</p>
-<p>当应用程序进入后台时，我们应该做些什么？</p>
-<p>保存用户数据或状态信息，所有没写到磁盘的文件或信息，在进入后台时，最后都写到磁盘去，因为程序可能在后台被杀死。</p>
-<p>释放尽可能释放的内存。</p>
-<pre><code>- (void)applicationDidEnterBackground:(UIApplication *)application
-</code></pre><p>此方法有大概5秒的时间让你完成这些任务。如果超过时间还有未完成的任务，你的程序就会被终止而且从内存中清除。</p>
-<p>如果还需要长时间的运行任务，可以在该方法中调用 </p>
-<pre><code>[application beginBackgroundTaskWithExpirationHandler:^{
-
-        NSLog(@&quot;begin Background Task With Expiration Handler&quot;);
-
-}];
-</code></pre><p>应用程序在后台时的内存使用：请求后台运行时间和启动线程来运行长时间运行的任务。</p>
-<p>在后台时，每个应用程序都应该释放最大的内存。系统努力的保持更多的应用程序在后台同时 运行。不过当内存不足时，会终止一些挂起的程序来回收内存，那些内存最大的程序首先被终止。</p>
-<p>事实上，应用程序应该的对象如果不再使用了，那就应该尽快的去掉强引用，这样编译器可以回收这些内存。如果你想缓存一些对象提升程序的性能，你可以在进入后台时，把这些对象去掉强引用。</p>
-<p>下面这样的对象应该尽快的去掉强引用：</p>
-<p>①图片对象</p>
-<p>②你可以重新加载的 大的视频或数据文件</p>
-<p>③任何没用而且可以轻易创建的对象</p>
-<p>在后台时，为了减少程序占用的内存，系统会自动在回收一些系统帮助你开辟的内存。比如：</p>
-<p>①系统回收Core Animation的后备存储。</p>
-<p>②去掉任何系统引用的缓存图片</p>
-<p>③去掉系统管理数据缓存强引用</p>
-<p>7：返回前台运行</p>
-<p>在暂停状态的应用程序必须准备处理任何排队的通知时，它返回到前台或后台执行状态。暂停的应用程序不执行任何代码，因此不能处理与方向的变化，时间的变化，偏好的变化，以及许多其他会影响应用程序的外观或状态的通知。为了确保这些更改不会丢失，系统排队许多相关的通知，并把它们传递给应用程序，只要它开始再次执行代码（无论是在前景或背景）。为了防止由偏快转为超载与它恢复时通知您的应用程序，该系统凝聚事件，并提供一个单一的通知（每个相关类型），反映了净变化，因为你的应用程序被暂停。</p>
-<p>8：程序终止</p>
-<p>程序只要符合以下情况之一，只要进入后台或挂起状态就会终止：</p>
-<p>①iOS4.0以前的系统</p>
-<p>②app是基于iOS4.0之前系统开发的。</p>
-<p>③设备不支持多任务</p>
-<p>④在Info.plist文件中，程序包含了 UIApplicationExitsOnSuspend  键。</p>
-<p>app如果终止了，系统会调用app的代理的方法 </p>
-<pre><code>- (void)applicationWillTerminate:(UIApplication *)application
-</code></pre><p>这样可以让你可以做一些清理工作。你可以保存一些数据或app的状态。这个方法也有5秒钟的限制。超时后方法会返回程序从内存中清除。</p>
-<p>注意：用户可以手工关闭应用程序。</p>
-<p>9：The Main Run Loop  主运行循环</p>
-<p>Main Run Loop负责处理用户相关的事件。UIApplication对象在程序启动时启动main run Loop，它处理事件和更新视图的界面。看Main Run Loop就知道，它是运行在程序的主线程上的。这样保证了接收到用户相关操作的事件是按顺序处理的。 </p>
-<p>用户操作设备，相关的操作事件被系统生成并通过UIKit的指定端口分发。事件在内部排成队列，一个个的分发到Main run loop 去做处理。UIApplication对象是第一个接收到时间的对象，它决定事件如何被处理。触摸事件分发到主窗口，窗口再分发到对应出发触摸事件的View。其他的事件通过其他途径分发给其他对象变量做处理。 </p>
-<p>大部分的事件可以在你的应用里分发，类似于触摸事件，远程操控事件（线控耳机等）都是由app的 responder objects 对象处理的。Responder objects 在你的app里到处都是，比如：UIApplication 对象，view对象，view controller 对象，都是resopnder objects。大部分事件的目标都指定了resopnder object，不过事件也可以传递给其他对象。比如，如果view对象不处理事件，可以传给父类view或者view controller。</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ViewController生命周期/">ViewController生命周期</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/03/07/ViewController/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
     <article id="post-ScriptForArchive" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -742,6 +538,85 @@ return Name;
       
         <p class="article-more-link">
           <a  href="/2014/09/24/Handle/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-ViewController" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2013/12/24/ViewController/" class="article-date">
+  	<time datetime="2013-12-24T13:07:06.000Z" itemprop="datePublished">12月 24</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/12/24/ViewController/">初识ViewController生命周期</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="ViewController生命周期"><a href="#ViewController生命周期" class="headerlink" title="ViewController生命周期"></a>ViewController生命周期</h2><pre><code>对于iOS应用程序，关键的是要知道你的应用程序是否正在前台或后台运行。由于系统资源在iOS设备上较为
+有限，一个应用程序必须在后台与前台有不同的行为。操作系统也会限制你的应用程序在后台的运行，以提
+高电池寿命，并提高用户与前台应用程序的体验。当应用程序在前台和后台之间切换时，操作系统将会通知
+您的应用程序。你可以通过这些通知来修改你的应用程序的行为。
+</code></pre><p>   当你的应用程序在前台活动时，系统会发送触摸事件给它进行处理。在UIKit的基础设施做了大部分的事件传递给你的自定义对象工作。所有您需要做的是覆盖在相应的对象的方法来处理这​​些事件。对于控件，UIKit会通过处理你的触摸事件，或者其他一些有趣的事情发生时调用您的自定义代码，比如当文本字段中的值更改。</p>
+<p>1：应用程序的状态</p>
+<pre><code>Not running未运行：程序没启动。
+
+Inactive未激活：程序在前台运行，不过没有接收到事件。在没有事件处理情况下程序通常停留在这个状
+态。
+
+Active激活：程序在前台运行而且接收到了事件。这也是前台的一个正常的模式。
+
+Backgroud后台：程序在后台而且能执行代码，大多数程序进入这个状态后会在在这个状态上停留一会。时
+间到之后会进入挂起状态(Suspended)。有的程序经过特殊的请求后可以长期处于Backgroud状态。
+
+Suspended挂起：程序在后台不能执行代码。系统会自动把程序变成这个状态而且不会发出通知。当挂起
+时，程序还是停留在内存中的，当系统内存低时，系统就把挂起的程序清除掉，为前台程序提供更多的内
+存。
+</code></pre><h2 id=""><a href="#" class="headerlink" title=" "></a>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ViewController生命周期/">ViewController生命周期</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2013/12/24/ViewController/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>

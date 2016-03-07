@@ -6,19 +6,28 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <title>初识ViewController生命周期 | 小杨VBoy的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="ViewController生命周期对于iOS应用程序，关键的是要知道你的应用程序是否正在前台或后台运行。由于系统资源在iOS设备上较为有限，一个应用程序必须在后台与前台有不同的行为。操作系统也会限制你的应用程序在后台的运行，以提高电池寿命，并提高用户与前台应用程序的体验。当应用程序在前台和后台之间切换时，操作系统将会通知您的应用程序。你可以通过这些通知来修改你的应用程序的行为。
-   当你的应用">
+  <meta name="description" content="ViewController生命周期对于iOS应用程序，关键的是要知道你的应用程序是否正在前台或后台运行。由于系统资源在iOS设备上较为
+有限，一个应用程序必须在后台与前台有不同的行为。操作系统也会限制你的应用程序在后台的运行，以提
+高电池寿命，并提高用户与前台应用程序的体验。当应用程序在前台和后台之间切换时，操作系统将会通知
+您的应用程序。你可以通过这些通知来修改你的应用程序的行为。
+   当你">
 <meta property="og:type" content="article">
 <meta property="og:title" content="初识ViewController生命周期">
-<meta property="og:url" content="http://devyang.cc/2016/03/07/ViewController/index.html">
+<meta property="og:url" content="http://devyang.cc/2013/12/24/ViewController/index.html">
 <meta property="og:site_name" content="小杨VBoy的博客">
-<meta property="og:description" content="ViewController生命周期对于iOS应用程序，关键的是要知道你的应用程序是否正在前台或后台运行。由于系统资源在iOS设备上较为有限，一个应用程序必须在后台与前台有不同的行为。操作系统也会限制你的应用程序在后台的运行，以提高电池寿命，并提高用户与前台应用程序的体验。当应用程序在前台和后台之间切换时，操作系统将会通知您的应用程序。你可以通过这些通知来修改你的应用程序的行为。
-   当你的应用">
-<meta property="og:updated_time" content="2016-03-07T09:00:20.000Z">
+<meta property="og:description" content="ViewController生命周期对于iOS应用程序，关键的是要知道你的应用程序是否正在前台或后台运行。由于系统资源在iOS设备上较为
+有限，一个应用程序必须在后台与前台有不同的行为。操作系统也会限制你的应用程序在后台的运行，以提
+高电池寿命，并提高用户与前台应用程序的体验。当应用程序在前台和后台之间切换时，操作系统将会通知
+您的应用程序。你可以通过这些通知来修改你的应用程序的行为。
+   当你">
+<meta property="og:updated_time" content="2016-03-07T09:15:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初识ViewController生命周期">
-<meta name="twitter:description" content="ViewController生命周期对于iOS应用程序，关键的是要知道你的应用程序是否正在前台或后台运行。由于系统资源在iOS设备上较为有限，一个应用程序必须在后台与前台有不同的行为。操作系统也会限制你的应用程序在后台的运行，以提高电池寿命，并提高用户与前台应用程序的体验。当应用程序在前台和后台之间切换时，操作系统将会通知您的应用程序。你可以通过这些通知来修改你的应用程序的行为。
-   当你的应用">
+<meta name="twitter:description" content="ViewController生命周期对于iOS应用程序，关键的是要知道你的应用程序是否正在前台或后台运行。由于系统资源在iOS设备上较为
+有限，一个应用程序必须在后台与前台有不同的行为。操作系统也会限制你的应用程序在后台的运行，以提
+高电池寿命，并提高用户与前台应用程序的体验。当应用程序在前台和后台之间切换时，操作系统将会通知
+您的应用程序。你可以通过这些通知来修改你的应用程序的行为。
+   当你">
   
     <link rel="alternative" href="/atom.xml" title="小杨VBoy的博客" type="application/atom+xml">
   
@@ -225,8 +234,8 @@
       <div class="body-wrap"><article id="post-ViewController" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/03/07/ViewController/" class="article-date">
-  	<time datetime="2016-03-07T09:02:40.000Z" itemprop="datePublished">3月 7</time>
+      <a href="/2013/12/24/ViewController/" class="article-date">
+  	<time datetime="2013-12-24T13:07:06.000Z" itemprop="datePublished">12月 24</time>
 </a>
     </div>
   
@@ -259,19 +268,26 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="ViewController生命周期"><a href="#ViewController生命周期" class="headerlink" title="ViewController生命周期"></a>ViewController生命周期</h2><pre><code>对于iOS应用程序，关键的是要知道你的应用程序是否正在前台或后台运行。由于系统资源在iOS设备上较为有限，一个应用程序必须在后台与前台有不同的行为。操作系统也会限制你的应用程序在后台的运行，以提高电池寿命，并提高用户与前台应用程序的体验。当应用程序在前台和后台之间切换时，操作系统将会通知您的应用程序。你可以通过这些通知来修改你的应用程序的行为。
+        <h2 id="ViewController生命周期"><a href="#ViewController生命周期" class="headerlink" title="ViewController生命周期"></a>ViewController生命周期</h2><pre><code>对于iOS应用程序，关键的是要知道你的应用程序是否正在前台或后台运行。由于系统资源在iOS设备上较为
+有限，一个应用程序必须在后台与前台有不同的行为。操作系统也会限制你的应用程序在后台的运行，以提
+高电池寿命，并提高用户与前台应用程序的体验。当应用程序在前台和后台之间切换时，操作系统将会通知
+您的应用程序。你可以通过这些通知来修改你的应用程序的行为。
 </code></pre><p>   当你的应用程序在前台活动时，系统会发送触摸事件给它进行处理。在UIKit的基础设施做了大部分的事件传递给你的自定义对象工作。所有您需要做的是覆盖在相应的对象的方法来处理这​​些事件。对于控件，UIKit会通过处理你的触摸事件，或者其他一些有趣的事情发生时调用您的自定义代码，比如当文本字段中的值更改。</p>
 <p>1：应用程序的状态</p>
 <pre><code>Not running未运行：程序没启动。
 
-Inactive未激活：程序在前台运行，不过没有接收到事件。在没有事件处理情况下程序通常停留在这个状态。
+Inactive未激活：程序在前台运行，不过没有接收到事件。在没有事件处理情况下程序通常停留在这个状
+态。
 
 Active激活：程序在前台运行而且接收到了事件。这也是前台的一个正常的模式。
 
-Backgroud后台：程序在后台而且能执行代码，大多数程序进入这个状态后会在在这个状态上停留一会。时间到之后会进入挂起状态(Suspended)。有的程序经过特殊的请求后可以长期处于Backgroud状态。
+Backgroud后台：程序在后台而且能执行代码，大多数程序进入这个状态后会在在这个状态上停留一会。时
+间到之后会进入挂起状态(Suspended)。有的程序经过特殊的请求后可以长期处于Backgroud状态。
 
-Suspended挂起：程序在后台不能执行代码。系统会自动把程序变成这个状态而且不会发出通知。当挂起时，程序还是停留在内存中的，当系统内存低时，系统就把挂起的程序清除掉，为前台程序提供更多的内存。
-</code></pre><p>2：各个程序运行状态时代理的回调</p>
+Suspended挂起：程序在后台不能执行代码。系统会自动把程序变成这个状态而且不会发出通知。当挂起
+时，程序还是停留在内存中的，当系统内存低时，系统就把挂起的程序清除掉，为前台程序提供更多的内
+存。
+</code></pre><h2 id=""><a href="#" class="headerlink" title=" "></a> <a id="more"></a></h2><p>2：各个程序运行状态时代理的回调</p>
 <p>①告诉代理进程启动但还没进入状态保存<br> {</p>
 <pre><code>-(BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
 
@@ -403,7 +419,7 @@ NSLog(@&quot;⑦当程序将要退出是被调用&quot;);
 <p>Main Run Loop负责处理用户相关的事件。UIApplication对象在程序启动时启动main run Loop，它处理事件和更新视图的界面。看Main Run Loop就知道，它是运行在程序的主线程上的。这样保证了接收到用户相关操作的事件是按顺序处理的。 </p>
 <p>用户操作设备，相关的操作事件被系统生成并通过UIKit的指定端口分发。事件在内部排成队列，一个个的分发到Main run loop 去做处理。UIApplication对象是第一个接收到时间的对象，它决定事件如何被处理。触摸事件分发到主窗口，窗口再分发到对应出发触摸事件的View。其他的事件通过其他途径分发给其他对象变量做处理。 </p>
 <p>大部分的事件可以在你的应用里分发，类似于触摸事件，远程操控事件（线控耳机等）都是由app的 responder objects 对象处理的。Responder objects 在你的app里到处都是，比如：UIApplication 对象，view对象，view controller 对象，都是resopnder objects。大部分事件的目标都指定了resopnder object，不过事件也可以传递给其他对象。比如，如果view对象不处理事件，可以传给父类view或者view controller。</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2>
+
       
     </div>
     
@@ -412,11 +428,15 @@ NSLog(@&quot;⑦当程序将要退出是被调用&quot;);
     
 <nav id="article-nav">
   
-  
-    <a href="/2015/11/24/ScriptForArchive/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">如何使用Shell脚本编译生成Archive文件并导出签名IPA文件。</div>
-      <strong class="article-nav-caption">></strong>
+    <a href="/2014/09/24/Handle/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          单例的写法
+        
+      </div>
     </a>
+  
   
 </nav>
 
@@ -430,7 +450,7 @@ NSLog(@&quot;⑦当程序将要退出是被调用&quot;);
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="ViewController" data-title="初识ViewController生命周期" data-url="http://devyang.cc/2016/03/07/ViewController/"></div>
+	<div class="ds-thread" data-thread-key="ViewController" data-title="初识ViewController生命周期" data-url="http://devyang.cc/2013/12/24/ViewController/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
