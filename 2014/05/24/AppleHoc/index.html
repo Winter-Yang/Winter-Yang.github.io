@@ -4,43 +4,29 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>初识NSRunloop | 小杨VBoy的博客</title>
+  <title>iOS开发，生成类似AppleApi文档 | 小杨VBoy的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="NSrunloopNSRunLoop的主要作用是控制NSRunloop里面线程的执行和休眠,它的本质是一个消息机制的处理模式.在平时接触最多的可能就是NSTimer中使用NSRunloop了，我们先看端代码
--(void)viewDidLoad {
-
-    [super viewDidLoad];
-    [self testTimer];
-}
-
--(void)testTimer{
-    UI">
+  <meta name="description" content="appledoc是最年轻的一个，并且只为Objective-C服务（很专一），能生成和Apple一个风格的文档，功能齐全，使用方便，还可以直接编译成docset安装进xcode。。看样子除了语言支持太少，其他的表现都不错，关键是最贴合Xcode。 虽然没有统计数据，但我相信ObjC这个用的人应该是最多的。
+1github:https://github.com/tomaz/appledoc
+##安装">
 <meta property="og:type" content="article">
-<meta property="og:title" content="初识NSRunloop">
-<meta property="og:url" content="http://devyang.cc/2015/04/24/NSRunloop/index.html">
+<meta property="og:title" content="iOS开发，生成类似AppleApi文档">
+<meta property="og:url" content="http://devyang.cc/2014/05/24/AppleHoc/index.html">
 <meta property="og:site_name" content="小杨VBoy的博客">
-<meta property="og:description" content="NSrunloopNSRunLoop的主要作用是控制NSRunloop里面线程的执行和休眠,它的本质是一个消息机制的处理模式.在平时接触最多的可能就是NSTimer中使用NSRunloop了，我们先看端代码
--(void)viewDidLoad {
-
-    [super viewDidLoad];
-    [self testTimer];
-}
-
--(void)testTimer{
-    UI">
-<meta property="og:image" content="http://devyang.cc/assets/blogImg/RunloopTest.png">
-<meta property="og:updated_time" content="2016-02-29T07:38:07.000Z">
+<meta property="og:description" content="appledoc是最年轻的一个，并且只为Objective-C服务（很专一），能生成和Apple一个风格的文档，功能齐全，使用方便，还可以直接编译成docset安装进xcode。。看样子除了语言支持太少，其他的表现都不错，关键是最贴合Xcode。 虽然没有统计数据，但我相信ObjC这个用的人应该是最多的。
+1github:https://github.com/tomaz/appledoc
+##安装">
+<meta property="og:image" content="http://devyang.cc/assets/blogImg/1.png">
+<meta property="og:image" content="http://devyang.cc/assets/blogImg/2.png">
+<meta property="og:image" content="http://devyang.cc/assets/blogImg/3.png">
+<meta property="og:image" content="http://devyang.cc/assets/blogImg/4.png">
+<meta property="og:image" content="http://devyang.cc/assets/blogImg/5.png">
+<meta property="og:updated_time" content="2016-03-08T04:25:37.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="初识NSRunloop">
-<meta name="twitter:description" content="NSrunloopNSRunLoop的主要作用是控制NSRunloop里面线程的执行和休眠,它的本质是一个消息机制的处理模式.在平时接触最多的可能就是NSTimer中使用NSRunloop了，我们先看端代码
--(void)viewDidLoad {
-
-    [super viewDidLoad];
-    [self testTimer];
-}
-
--(void)testTimer{
-    UI">
+<meta name="twitter:title" content="iOS开发，生成类似AppleApi文档">
+<meta name="twitter:description" content="appledoc是最年轻的一个，并且只为Objective-C服务（很专一），能生成和Apple一个风格的文档，功能齐全，使用方便，还可以直接编译成docset安装进xcode。。看样子除了语言支持太少，其他的表现都不错，关键是最贴合Xcode。 虽然没有统计数据，但我相信ObjC这个用的人应该是最多的。
+1github:https://github.com/tomaz/appledoc
+##安装">
   
     <link rel="alternative" href="/atom.xml" title="小杨VBoy的博客" type="application/atom+xml">
   
@@ -244,11 +230,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-NSRunloop" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-AppleHoc" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/04/24/NSRunloop/" class="article-date">
-  	<time datetime="2015-04-24T00:15:00.000Z" itemprop="datePublished">4月 24</time>
+      <a href="/2014/05/24/AppleHoc/" class="article-date">
+  	<time datetime="2014-05-24T06:07:06.000Z" itemprop="datePublished">5月 24</time>
 </a>
     </div>
   
@@ -261,7 +247,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      初识NSRunloop
+      iOS开发，生成类似AppleApi文档
     </h1>
   
 
@@ -270,7 +256,7 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NSrunloop/">NSrunloop</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AppleHoc/">AppleHoc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Xcode文档/">Xcode文档</a></li></ul>
 	</div>
 
         
@@ -281,47 +267,102 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="NSrunloop"><a href="#NSrunloop" class="headerlink" title="NSrunloop"></a>NSrunloop</h2><p><strong>NSRunLoop</strong>的主要作用是控制NSRunloop里面线程的执行和休眠,它的本质是一个消息机制的处理模式.在平时接触最多的可能就是NSTimer中使用NSRunloop了，我们先看端代码</p>
-<pre><code>-(void)viewDidLoad {
+        <p>appledoc是最年轻的一个，并且只为Objective-C服务（很专一），能生成和Apple一个风格的文档，功能齐全，使用方便，还可以直接编译成docset安装进xcode。。看样子除了语言支持太少，其他的表现都不错，关键是最贴合Xcode。 虽然没有统计数据，但我相信ObjC这个用的人应该是最多的。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">github:https://github.com/tomaz/appledoc</span><br></pre></td></tr></table></figure>
+<p>##安装</p>
+<pre><code>git clone git://github.com/tomaz/appledoc.git
 
-    [super viewDidLoad];
-    [self testTimer];
+cd ./appledoc
+
+sudo sh installe-appledoc.sh
+</code></pre><p>##验证<br>    appledoc –version</p>
+<p>##使用</p>
+<ul>
+<li>1.选中你的工程,点击Add Target按钮,选择 Other -&gt; Aggregate模板新建.</li>
+<li>2.点击Add Build Phase按钮,添加一个Run Script.</li>
+<li>3.把下面的模板代码复制进去,把前几行参数改成你自己的.</li>
+<li>4.在Xcode左上角选择这个新建的Target,然后点击build.</li>
+<li><p>5.文档就会编译好并且自动安装进Xcode了(重启Xcode生效).</p>
+<p>  {</p>
+<pre><code>#appledoc Xcode script  
+# Start constants  
+company=&quot;ACME&quot;;  
+companyID=&quot;com.ACME&quot;;
+companyURL=&quot;http://ACME.com&quot;;
+target=&quot;iphoneos&quot;;
+#target=&quot;macosx&quot;;
+outputPath=&quot;~/help&quot;;
+# End constants
+
+/usr/local/bin/appledoc \
+--project-name &quot;${PROJECT_NAME}&quot; \
+--project-company &quot;${company}&quot; \
+--company-id &quot;${companyID}&quot; \
+--docset-atom-filename &quot;${company}.atom&quot; \
+--docset-feed-url &quot;${companyURL}/${company}/%DOCSETATOMFILENAME&quot; \
+--docset-package-url &quot;${companyURL}/${company}/%DOCSETPACKAGEFILENAME&quot; \
+--docset-fallback-url &quot;${companyURL}/${company}&quot; \
+--output &quot;${outputPath}&quot; \
+--publish-docset \
+--docset-platform-family &quot;${target}&quot; \
+--logformat xcode \
+--keep-intermediate-files \
+--no-repeat-first-par \
+--no-warn-invalid-crossref \
+--exit-threshold 2 \
+&quot;${PROJECT_DIR}&quot;
+</code></pre><p>  }</p>
+</li>
+</ul>
+<p>##语法<br>在写代码的过程中，只有注释符合规范，才能被appleHoc认可。实际开发中，大多数使用VVDodcunmenter来写注释，但是我测试的过程中，部分注释无法识别，不知道是我的原因还是VVDodcunmenter得部分语法不符合规范。<br>下面是一些常用的语法示意:</p>
+<pre><code>{
+
+    /** This is a test class.
+
+     * It allows to set Set the text
+     * It allows to set Set the font for text
+
+     */
+    @interface Test : NSObject
+    /// The text displayed by the user set.
+    @property (nonatomic, copy) NSString *text;
+
+    /**
+     The font of the text. Default is 12-point system font.
+     Set a new value to this property also causes the new font to be applied to the entire `text`.
+     Get the value returns the font at the head of `text`.
+     */
+    @property (nonatomic, strong) UIFont *font;
+    /**
+     @brief 这里是方法的简介。该Tag不能放到类注释里。
+     @exception UIColorException 这里是方法抛出异常的说明
+     @warning 这里是警告，会显示成蓝色的框框
+     @bug 这里是bug，会显示成黄色的框框
+     @param red   这里是参数说明1
+     @param green 这里是参数说明2
+     @param blue   这里是参数说明3
+     @return  这里是返回值说明
+     */
+    - (UIColor *)colorWithRed:(int)red green:(int)green blue:(int)blue;
+
 }
+</code></pre><p>编译出来的文档路径默认存储在</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/Users/XXX/Library/Developer/Shared/Documentation/DocSets/</span><br></pre></td></tr></table></figure>
+<p>Docset格式，实际上是一个bundle,里面包含了一些xml和html。显示包内容后就可以查看和修改了。如果需要放到网站上，那单独将html部分取出来就行。</p>
+<p>Docset双击安装后，在Xcode中就可以实时查看某个方法的说明了，体验和官方文档保持一致。</p>
+<p>本人安装的Dash用的也很赞，比苹果的快多了，开发中很方便，很实用</p>
+<p>Documents中的index.html保存到服务器，公司内部人员就可以随意查看代码的api了</p>
+<p>##编译出来的效果图如下：</p>
+<p>###AppleHoc首页</p>
+<p><img src="/assets/blogImg/1.png" alt=""></p>
+<p>####AppDelegate</p>
+<p><img src="/assets/blogImg/2.png" alt=""></p>
+<p>####Test</p>
+<p><img src="/assets/blogImg/3.png" alt=""></p>
+<p><img src="/assets/blogImg/4.png" alt=""></p>
+<p>####AppDelegate</p>
+<p><img src="/assets/blogImg/5.png" alt=""></p>
 
--(void)testTimer{
-    UIScrollView *myScroll = [[UIScrollView alloc]initWithFrame:[UIScreen mainScreen].bounds];
-    myScroll.contentSize = CGSizeMake(375, 10000);
-    [self.view addSubview:myScroll];
-    myScroll.backgroundColor = [UIColor redColor];
-    myScroll.delegate = self;
-    [self defalutTimer];//defalult mode 下的timer
-    [self commonTimer];//common modes中的timer
-
-}
-
--(void)defalutTimer {
-    [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(doTime) userInfo:nil repeats:YES];
-}
-
--(void)commonTimer {
-    NSTimer *timer =[NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(doTime) userInfo:nil repeats:YES];
-    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
-}
-
--(void)doTime {
-    NSLog(@&quot;%@&quot;,[NSRunLoop currentRunLoop].currentMode);
-    NSLog(@&quot;timer--&quot;);
-}
-
--(void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    NSLog(@&quot;%@&quot;,[NSRunLoop currentRunLoop].currentMode);
-}
-</code></pre><p>控制台的log如下：</p>
-<p><img src="/assets/blogImg/RunloopTest.png" alt=""></p>
-<p>通过log我们可以发现，如果我们滚动scrollView，那么我们会发现，当前的Timer为defalutTimer，commonTimer并没有走，就好像scrollView在滚动的时候将timer暂停了一样。其实就是RunLoop Mode在作怪。</p>
-<p>其实在程序开发过程中，我们并不需要收到创建一个runloop，因此在程序进入主线程中默认为我们创建了一个runloop，在我们注册Timer的时候，实际上是在Runloop里面注册了一下，Runloop每次loop时都会检测这个timer，看是否可以触发。，但是当Runloop在A model，timer确注册在B model时，此时runloop是无法检测到这个timer的，所以需要采用commonTimer的方式，在scrollview进行滑动的时候runloop进入UITrackingRunLoopModes模式，因此需要此将timer加入到NSRunLoopCommonModes模式，这样保证scrollview滑动的同时，timer也在同时进行。</p>
-<p>这是在开发过程中最常用的地方，当然还有其他使用的地方，比如Table的滑动，多线程等。</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2>
       
     </div>
     
@@ -330,18 +371,18 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/11/24/ScriptForArchive/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2014/09/24/Handle/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          如何使用Shell脚本编译生成Archive文件并导出签名IPA文件。
+          单例的写法
         
       </div>
     </a>
   
   
-    <a href="/2014/09/24/Handle/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">单例的写法</div>
+    <a href="/2013/12/24/ViewController/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">初识ViewController生命周期</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -357,7 +398,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="NSRunloop" data-title="初识NSRunloop" data-url="http://devyang.cc/2015/04/24/NSRunloop/"></div>
+	<div class="ds-thread" data-thread-key="AppleHoc" data-title="iOS开发，生成类似AppleApi文档" data-url="http://devyang.cc/2014/05/24/AppleHoc/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

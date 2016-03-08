@@ -120,7 +120,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/App/" style="font-size: 10px;">App</a> <a href="/tags/Archive/" style="font-size: 10px;">Archive</a> <a href="/tags/IPA/" style="font-size: 10px;">IPA</a> <a href="/tags/NSrunloop/" style="font-size: 10px;">NSrunloop</a> <a href="/tags/OC/" style="font-size: 10px;">OC</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/ViewController生命周期/" style="font-size: 10px;">ViewController生命周期</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/workspace/" style="font-size: 10px;">workspace</a> <a href="/tags/单例/" style="font-size: 10px;">单例</a>
+						<a href="/tags/App/" style="font-size: 10px;">App</a> <a href="/tags/AppleHoc/" style="font-size: 10px;">AppleHoc</a> <a href="/tags/Archive/" style="font-size: 10px;">Archive</a> <a href="/tags/IPA/" style="font-size: 10px;">IPA</a> <a href="/tags/NSrunloop/" style="font-size: 10px;">NSrunloop</a> <a href="/tags/OC/" style="font-size: 10px;">OC</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/ViewController生命周期/" style="font-size: 10px;">ViewController生命周期</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/Xcode文档/" style="font-size: 10px;">Xcode文档</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/workspace/" style="font-size: 10px;">workspace</a> <a href="/tags/单例/" style="font-size: 10px;">单例</a>
 					</div>
 				</section>
 				
@@ -539,6 +539,157 @@ return Name;
         <p class="article-more-link">
           <a  href="/2014/09/24/Handle/#more">more >></a>
         </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-AppleHoc" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/05/24/AppleHoc/" class="article-date">
+  	<time datetime="2014-05-24T06:07:06.000Z" itemprop="datePublished">5月 24</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/05/24/AppleHoc/">iOS开发，生成类似AppleApi文档</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>appledoc是最年轻的一个，并且只为Objective-C服务（很专一），能生成和Apple一个风格的文档，功能齐全，使用方便，还可以直接编译成docset安装进xcode。。看样子除了语言支持太少，其他的表现都不错，关键是最贴合Xcode。 虽然没有统计数据，但我相信ObjC这个用的人应该是最多的。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">github:https://github.com/tomaz/appledoc</span><br></pre></td></tr></table></figure>
+<p>##安装</p>
+<pre><code>git clone git://github.com/tomaz/appledoc.git
+
+cd ./appledoc
+
+sudo sh installe-appledoc.sh
+</code></pre><p>##验证<br>    appledoc –version</p>
+<p>##使用</p>
+<ul>
+<li>1.选中你的工程,点击Add Target按钮,选择 Other -&gt; Aggregate模板新建.</li>
+<li>2.点击Add Build Phase按钮,添加一个Run Script.</li>
+<li>3.把下面的模板代码复制进去,把前几行参数改成你自己的.</li>
+<li>4.在Xcode左上角选择这个新建的Target,然后点击build.</li>
+<li><p>5.文档就会编译好并且自动安装进Xcode了(重启Xcode生效).</p>
+<p>  {</p>
+<pre><code>#appledoc Xcode script  
+# Start constants  
+company=&quot;ACME&quot;;  
+companyID=&quot;com.ACME&quot;;
+companyURL=&quot;http://ACME.com&quot;;
+target=&quot;iphoneos&quot;;
+#target=&quot;macosx&quot;;
+outputPath=&quot;~/help&quot;;
+# End constants
+
+/usr/local/bin/appledoc \
+--project-name &quot;${PROJECT_NAME}&quot; \
+--project-company &quot;${company}&quot; \
+--company-id &quot;${companyID}&quot; \
+--docset-atom-filename &quot;${company}.atom&quot; \
+--docset-feed-url &quot;${companyURL}/${company}/%DOCSETATOMFILENAME&quot; \
+--docset-package-url &quot;${companyURL}/${company}/%DOCSETPACKAGEFILENAME&quot; \
+--docset-fallback-url &quot;${companyURL}/${company}&quot; \
+--output &quot;${outputPath}&quot; \
+--publish-docset \
+--docset-platform-family &quot;${target}&quot; \
+--logformat xcode \
+--keep-intermediate-files \
+--no-repeat-first-par \
+--no-warn-invalid-crossref \
+--exit-threshold 2 \
+&quot;${PROJECT_DIR}&quot;
+</code></pre><p>  }</p>
+</li>
+</ul>
+<p>##语法<br>在写代码的过程中，只有注释符合规范，才能被appleHoc认可。实际开发中，大多数使用VVDodcunmenter来写注释，但是我测试的过程中，部分注释无法识别，不知道是我的原因还是VVDodcunmenter得部分语法不符合规范。<br>下面是一些常用的语法示意:</p>
+<pre><code>{
+
+    /** This is a test class.
+
+     * It allows to set Set the text
+     * It allows to set Set the font for text
+
+     */
+    @interface Test : NSObject
+    /// The text displayed by the user set.
+    @property (nonatomic, copy) NSString *text;
+
+    /**
+     The font of the text. Default is 12-point system font.
+     Set a new value to this property also causes the new font to be applied to the entire `text`.
+     Get the value returns the font at the head of `text`.
+     */
+    @property (nonatomic, strong) UIFont *font;
+    /**
+     @brief 这里是方法的简介。该Tag不能放到类注释里。
+     @exception UIColorException 这里是方法抛出异常的说明
+     @warning 这里是警告，会显示成蓝色的框框
+     @bug 这里是bug，会显示成黄色的框框
+     @param red   这里是参数说明1
+     @param green 这里是参数说明2
+     @param blue   这里是参数说明3
+     @return  这里是返回值说明
+     */
+    - (UIColor *)colorWithRed:(int)red green:(int)green blue:(int)blue;
+
+}
+</code></pre><p>编译出来的文档路径默认存储在</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/Users/XXX/Library/Developer/Shared/Documentation/DocSets/</span><br></pre></td></tr></table></figure>
+<p>Docset格式，实际上是一个bundle,里面包含了一些xml和html。显示包内容后就可以查看和修改了。如果需要放到网站上，那单独将html部分取出来就行。</p>
+<p>Docset双击安装后，在Xcode中就可以实时查看某个方法的说明了，体验和官方文档保持一致。</p>
+<p>本人安装的Dash用的也很赞，比苹果的快多了，开发中很方便，很实用</p>
+<p>Documents中的index.html保存到服务器，公司内部人员就可以随意查看代码的api了</p>
+<p>##编译出来的效果图如下：</p>
+<p>###AppleHoc首页</p>
+<p><img src="/assets/blogImg/1.png" alt=""></p>
+<p>####AppDelegate</p>
+<p><img src="/assets/blogImg/2.png" alt=""></p>
+<p>####Test</p>
+<p><img src="/assets/blogImg/3.png" alt=""></p>
+<p><img src="/assets/blogImg/4.png" alt=""></p>
+<p>####AppDelegate</p>
+<p><img src="/assets/blogImg/5.png" alt=""></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AppleHoc/">AppleHoc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Xcode文档/">Xcode文档</a></li></ul>
+	</div>
+
+      
+
       
       <div class="clearfix"></div>
     </div>
