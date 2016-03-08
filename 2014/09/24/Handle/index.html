@@ -26,7 +26,7 @@
 @interface Student：NSObject
 1注意assign的用法    使用strong在ARC中同样是因为释放不掉出现内存泄露
 @p">
-<meta property="og:updated_time" content="2016-02-29T07:41:02.000Z">
+<meta property="og:updated_time" content="2016-03-08T04:33:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="单例的写法">
 <meta name="twitter:description" content="1如果没有这行代码的话，协议StudentDelegate中得Student类型就会查找不到，报错
@@ -286,7 +286,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">注意assign的用法    使用strong在ARC中同样是因为释放不掉出现内存泄露</span><br></pre></td></tr></table></figure>
 <p>@property(assign, nonatomic) id<studentdelegate>delegate;</studentdelegate></p>
 <p>@end</p>
-<p>static className *Name = nil;</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p>static className *Name = nil;</p>
 <p>+(className *)sharedclassName{</p>
 <pre><code>static dispatch_once_t onceToken;
 dispatch_once(&amp;onceToken, ^{
@@ -294,7 +294,7 @@ dispatch_once(&amp;onceToken, ^{
 });
 return Name;
 </code></pre><p>}</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2>
+
       
     </div>
     

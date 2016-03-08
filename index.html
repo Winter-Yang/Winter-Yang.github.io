@@ -261,91 +261,7 @@
 - provisioningProfile
 - scheme name 
 - build_config
-</code></pre><h4 id="代码块如下"><a href="#代码块如下" class="headerlink" title="代码块如下"></a>代码块如下</h4><pre><code>#!/bin/bash
-
-#out file
-AppInfoPath=&quot;/Users/YangWD/Desktop/AppTest&quot;
-
-# workspace name， must be xcworkspace
-build_workspace=&quot;ZCFundManage.xcworkspace&quot;
-
-# project name and path
-project_path=$(pwd)
-project_name=$(ls | grep xcodeproj | awk -F.xcodeproj &apos;{print $1}&apos;)
-
-# Info.plist
-app_infoplist_path=${project_path}/${project_name}/Info.plist
-
-# bundleShortVersion
-bundleShortVersion=$(/usr/libexec/PlistBuddy -c &quot;print CFBundleShortVersionString&quot; &quot;${app_infoplist_path}&quot;)
-
-# bundleVersion
-bundleVersion=$(/usr/libexec/PlistBuddy -c &quot;print CFBundleVersion&quot; &quot;${app_infoplist_path}&quot;)
-
-# scheme name
-build_scheme=&quot;ZCFundManage&quot;
-
-# buidl config. the default is Debug|Release
-build_config=&quot;Release&quot;
-
-/usr/libexec/PlistBuddy -c &quot;set :CFBundleIdentifier ${oldAppFile}&quot; &quot;$app_infoplist_path&quot;    
-/usr/libexec/PlistBuddy -c &quot;set :CFBundleName ${appFile}&quot; &quot;$app_infoplist_path&quot;
-/usr/libexec/PlistBuddy -c &quot;set :CFBundleDisplayName ${appFile}&quot; &quot;$app_infoplist_path&quot;
-
-# provisiong profile name
-provisioningProfile=&apos;&quot;XC Ad Hoc: com.xxxxxx.yyyyyy&quot;&apos;
-# creat Time
-timeStamp=&quot;$(date +&quot;%Y%m%d_%H%M%S&quot;)&quot;
-echo &quot;*****打包时间:$timeStamp&quot;
-if [ ! -d &quot;$project_path/$build_workspace&quot; ]; then
-    echo  &quot;Error!Current path is not a xcode workspace.Please check, or do not use -w option.&quot;
-    exit 2
-fi
-# clean
-clean_cmd=&apos;xcodebuild&apos;
-clean_cmd=${clean_cmd}&apos; clean -workspace &apos;${build_workspace}&apos; -scheme &apos;${build_scheme}&apos; 
--configuration &apos;${build_config}
-# clean log
-$clean_cmd &gt;  $build_path/clean_qa.log || exit
-# Exporting xcarchive(xcode-Product-Archive)
-archive_name=&quot;ZCFundManage_${bundleShortVersion}_${timeStamp}.xcarchive&quot;
-archive_path=&quot;$build_path/&quot;$archive_name
-build_cmd=&apos;xcodebuild&apos;
-build_cmd=${build_cmd}&apos; -workspace &apos;${build_workspace}&apos; -scheme &apos;${build_scheme}&apos; 
--destination generic/platform=iOS archive -configuration &apos;${build_config}&apos; ONLY_ACTIVE_ARCH=NO -archivePath 
-&apos;${archive_path}
-echo &quot;** Archiving ZF ** to the ${archive_path}&quot;
-
-# build log
-$build_cmd &gt; $build_path/build_archive_qa.log || exit
-if [ ! -d &quot;${archive_path}&quot; ]; then
-    echo  &quot;** Error! ARCHIVE ZF FAILED ** Please check $build_path/build_archive_qa.log.&quot;
-    exit 2
-else
-    echo &quot;** ARCHIVE ZF SUCCEEDED ** to the ${archive_path}&quot;
-fi 
-
-# Exporting ipa
-ipa_name=&quot;ZCFundManage_${bundleShortVersion}_${timeStamp}.ipa&quot;
-ipa_path=&quot;$build_path/&quot;$ipa_name 
-ipa_cmd=&apos;xcodebuild&apos;
-ipa_cmd=${ipa_cmd}&apos; -exportArchive -exportFormat ipa -archivePath &apos;${archive_path}&apos; 
--exportPath &apos;${ipa_path}&apos; -exportProvisioningProfile &apos;${provisioningProfile}
-
-echo &quot;** Exporting ZF ** to the ${ipa_path}&quot;
-echo ${ipa_cmd}
-eval ${ipa_cmd} &gt; $build_path/export_ipa_qa.log || exit
-if [ ! -f &quot;${ipa_path}&quot; ]; then
-    echo &quot;** Error! Export IPA ZF FAILED ** Please check $build_path/export_ipa_qa.log.&quot;
-    exit 2
-else
-    echo &quot;** Export IPA ZF SUCCEEDED ** to the ${ipa_path}&quot;
-fi
-</code></pre><h3 id="6-执行脚本"><a href="#6-执行脚本" class="headerlink" title="6: 执行脚本"></a>6: 执行脚本</h3><pre><code>./build_one_target.sh
-</code></pre><p>大一些的工程，大约3-5分钟完成。<br>完成之后，在workspace目录下的build目录下，会有如下两个主要文件。<br>targetname_QA_20150420_094731.xcarchive<br>targetname_QA_adhoc_v2.1.1_b44_rev7849_t20150420_094731.ipa</p>
-<p>xcarchive文件很重要，可以用于不同证书签名的ipa文件<br>ipa文件使用的是adhoc 证书导出，用于真机测试分发。证书名称在源代码中配置。根据不同的产品bundle id，做相应修改，这里的名称和证书，仅做演示参考，不具有任何商业意义</p>
-<p>参考：<a href="http://blog.csdn.net/vieri_ch/article/details/45147027">http://blog.csdn.net/vieri_ch/article/details/45147027</a><br>github：<a href="https://github.com/Winter-Yang/ScriptForArchive">https://github.com/Winter-Yang/ScriptForArchive</a><br>blog：<a href="http://devyang.cc/2015/11/24/ScriptForArchive">http://devyang.cc/2015/11/24/ScriptForArchive</a></p>
-<h2 id=""><a href="#" class="headerlink" title=""></a>
+</code></pre><h2 id=""><a href="#" class="headerlink" title=""></a>
       
     </div>
     
@@ -406,45 +322,6 @@ fi
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="NSrunloop"><a href="#NSrunloop" class="headerlink" title="NSrunloop"></a>NSrunloop</h2><p><strong>NSRunLoop</strong>的主要作用是控制NSRunloop里面线程的执行和休眠,它的本质是一个消息机制的处理模式.在平时接触最多的可能就是NSTimer中使用NSRunloop了，我们先看端代码</p>
-<pre><code>-(void)viewDidLoad {
-
-    [super viewDidLoad];
-    [self testTimer];
-}
-
--(void)testTimer{
-    UIScrollView *myScroll = [[UIScrollView alloc]initWithFrame:[UIScreen mainScreen].bounds];
-    myScroll.contentSize = CGSizeMake(375, 10000);
-    [self.view addSubview:myScroll];
-    myScroll.backgroundColor = [UIColor redColor];
-    myScroll.delegate = self;
-    [self defalutTimer];//defalult mode 下的timer
-    [self commonTimer];//common modes中的timer
-
-}
-
--(void)defalutTimer {
-    [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(doTime) userInfo:nil repeats:YES];
-}
-
--(void)commonTimer {
-    NSTimer *timer =[NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(doTime) userInfo:nil repeats:YES];
-    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
-}
-
--(void)doTime {
-    NSLog(@&quot;%@&quot;,[NSRunLoop currentRunLoop].currentMode);
-    NSLog(@&quot;timer--&quot;);
-}
-
--(void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    NSLog(@&quot;%@&quot;,[NSRunLoop currentRunLoop].currentMode);
-}
-</code></pre><p>控制台的log如下：</p>
-<p><img src="/assets/blogImg/RunloopTest.png" alt=""></p>
-<p>通过log我们可以发现，如果我们滚动scrollView，那么我们会发现，当前的Timer为defalutTimer，commonTimer并没有走，就好像scrollView在滚动的时候将timer暂停了一样。其实就是RunLoop Mode在作怪。</p>
-<p>其实在程序开发过程中，我们并不需要收到创建一个runloop，因此在程序进入主线程中默认为我们创建了一个runloop，在我们注册Timer的时候，实际上是在Runloop里面注册了一下，Runloop每次loop时都会检测这个timer，看是否可以触发。，但是当Runloop在A model，timer确注册在B model时，此时runloop是无法检测到这个timer的，所以需要采用commonTimer的方式，在scrollview进行滑动的时候runloop进入UITrackingRunLoopModes模式，因此需要此将timer加入到NSRunLoopCommonModes模式，这样保证scrollview滑动的同时，timer也在同时进行。</p>
-<p>这是在开发过程中最常用的地方，当然还有其他使用的地方，比如Table的滑动，多线程等。</p>
 <h2 id=""><a href="#" class="headerlink" title=""></a>
       
     </div>
@@ -514,14 +391,6 @@ fi
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">注意assign的用法    使用strong在ARC中同样是因为释放不掉出现内存泄露</span><br></pre></td></tr></table></figure>
 <p>@property(assign, nonatomic) id<StudentDelegate>delegate;</p>
 <p>@end</p>
-<p>static className *Name = nil;</p>
-<p>+(className *)sharedclassName{</p>
-<pre><code>static dispatch_once_t onceToken;
-dispatch_once(&amp;onceToken, ^{
-    Name = [[className alloc]init];
-});
-return Name;
-</code></pre><p>}</p>
 <h2 id=""><a href="#" class="headerlink" title=""></a>
       
     </div>

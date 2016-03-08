@@ -6,41 +6,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <title>初识NSRunloop | 小杨VBoy的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="NSrunloopNSRunLoop的主要作用是控制NSRunloop里面线程的执行和休眠,它的本质是一个消息机制的处理模式.在平时接触最多的可能就是NSTimer中使用NSRunloop了，我们先看端代码
--(void)viewDidLoad {
-
-    [super viewDidLoad];
-    [self testTimer];
-}
-
--(void)testTimer{
-    UI">
+  <meta name="description" content="NSrunloopNSRunLoop的主要作用是控制NSRunloop里面线程的执行和休眠,它的本质是一个消息机制的处理模式.在平时接触最多的可能就是NSTimer中使用NSRunloop了，我们先看端代码">
 <meta property="og:type" content="article">
 <meta property="og:title" content="初识NSRunloop">
 <meta property="og:url" content="http://devyang.cc/2015/04/24/NSRunloop/index.html">
 <meta property="og:site_name" content="小杨VBoy的博客">
-<meta property="og:description" content="NSrunloopNSRunLoop的主要作用是控制NSRunloop里面线程的执行和休眠,它的本质是一个消息机制的处理模式.在平时接触最多的可能就是NSTimer中使用NSRunloop了，我们先看端代码
--(void)viewDidLoad {
-
-    [super viewDidLoad];
-    [self testTimer];
-}
-
--(void)testTimer{
-    UI">
+<meta property="og:description" content="NSrunloopNSRunLoop的主要作用是控制NSRunloop里面线程的执行和休眠,它的本质是一个消息机制的处理模式.在平时接触最多的可能就是NSTimer中使用NSRunloop了，我们先看端代码">
 <meta property="og:image" content="http://devyang.cc/assets/blogImg/RunloopTest.png">
-<meta property="og:updated_time" content="2016-02-29T07:38:07.000Z">
+<meta property="og:updated_time" content="2016-03-08T04:33:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初识NSRunloop">
-<meta name="twitter:description" content="NSrunloopNSRunLoop的主要作用是控制NSRunloop里面线程的执行和休眠,它的本质是一个消息机制的处理模式.在平时接触最多的可能就是NSTimer中使用NSRunloop了，我们先看端代码
--(void)viewDidLoad {
-
-    [super viewDidLoad];
-    [self testTimer];
-}
-
--(void)testTimer{
-    UI">
+<meta name="twitter:description" content="NSrunloopNSRunLoop的主要作用是控制NSRunloop里面线程的执行和休眠,它的本质是一个消息机制的处理模式.在平时接触最多的可能就是NSTimer中使用NSRunloop了，我们先看端代码">
   
     <link rel="alternative" href="/atom.xml" title="小杨VBoy的博客" type="application/atom+xml">
   
@@ -282,7 +258,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="NSrunloop"><a href="#NSrunloop" class="headerlink" title="NSrunloop"></a>NSrunloop</h2><p><strong>NSRunLoop</strong>的主要作用是控制NSRunloop里面线程的执行和休眠,它的本质是一个消息机制的处理模式.在平时接触最多的可能就是NSTimer中使用NSRunloop了，我们先看端代码</p>
-<pre><code>-(void)viewDidLoad {
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><pre><code>-(void)viewDidLoad {
 
     [super viewDidLoad];
     [self testTimer];
@@ -321,7 +297,7 @@
 <p>通过log我们可以发现，如果我们滚动scrollView，那么我们会发现，当前的Timer为defalutTimer，commonTimer并没有走，就好像scrollView在滚动的时候将timer暂停了一样。其实就是RunLoop Mode在作怪。</p>
 <p>其实在程序开发过程中，我们并不需要收到创建一个runloop，因此在程序进入主线程中默认为我们创建了一个runloop，在我们注册Timer的时候，实际上是在Runloop里面注册了一下，Runloop每次loop时都会检测这个timer，看是否可以触发。，但是当Runloop在A model，timer确注册在B model时，此时runloop是无法检测到这个timer的，所以需要采用commonTimer的方式，在scrollview进行滑动的时候runloop进入UITrackingRunLoopModes模式，因此需要此将timer加入到NSRunLoopCommonModes模式，这样保证scrollview滑动的同时，timer也在同时进行。</p>
 <p>这是在开发过程中最常用的地方，当然还有其他使用的地方，比如Table的滑动，多线程等。</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2>
+
       
     </div>
     
